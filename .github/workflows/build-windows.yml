@@ -22,21 +22,19 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r document-2form/requirements.txt
+        pip install -r requirements.txt
         pip install Pillow
     
     - name: Create icon
       run: |
-        cd document-2form
         python create_icon.py || echo "Icon creation failed, using default"
     
     - name: Build executable
       run: |
-        cd document-2form
         pyinstaller --onefile --windowed --name "WordFormFiller" --icon=icon.ico --add-data "requirements.txt;." --hidden-import "docx" --hidden-import "docx2txt" --hidden-import "tkinter" --hidden-import "tkinter.ttk" --hidden-import "tkinter.filedialog" --hidden-import "tkinter.messagebox" word_form_filler.py
     
     - name: Upload executable
       uses: actions/upload-artifact@v4
       with:
         name: WordFormFiller.exe
-        path: document-2form/dist/WordFormFiller.exe
+        path: dist/WordFormFiller.exe
