@@ -31,10 +31,10 @@ jobs:
     
     - name: Build executable
       run: |
-        pyinstaller --onefile --windowed --name "WordFormFiller" --icon=icon.ico --add-data "requirements.txt;." --hidden-import "docx" --hidden-import "docx2txt" --hidden-import "tkinter" --hidden-import "tkinter.ttk" --hidden-import "tkinter.filedialog" --hidden-import "tkinter.messagebox" word_form_filler.py
+        pyinstaller --onefile --windowed --name "WordFormFillerDoc" --icon=icon.ico --add-data "requirements.txt;." --hidden-import "docx" --hidden-import "docx2txt" --hidden-import "tkinter" --hidden-import "tkinter.ttk" --hidden-import "tkinter.filedialog" --hidden-import "tkinter.messagebox" word_form_filler_doc.py
     
     - name: Upload executable
       uses: actions/upload-artifact@v4
       with:
-        name: WordFormFiller.exe
-        path: dist/WordFormFiller.exe
+        name: WordFormFillerDoc.exe
+        path: dist/WordFormFillerDoc.exe
